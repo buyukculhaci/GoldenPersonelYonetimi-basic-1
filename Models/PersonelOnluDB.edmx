@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="userManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'userManagement.dbo.Departman' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Departman">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="kullCek" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PersonelListesi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="onlu" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="userManagementModelStoreContainer">
+          <EntitySet Name="Departman" EntityType="Self.Departman" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Departman].[id] AS [id], 
+    [Departman].[ad] AS [ad]
+    FROM [dbo].[Departman] AS [Departman]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="userManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Departman">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="userManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departman" EntityType="Self.Departman" />
+          <FunctionImport Name="PersonelListesi" ReturnType="Collection(userManagementModel.PersonelListesi_Result2)">
+          <Parameter Name="onlu" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="kullCek" ReturnType="Collection(userManagementModel.kullCek_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="PersonelListesi_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="kullAdi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="departmanId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="soyad" Nullable="true" MaxLength="50" />
+          <Property Type="Int16" Name="maas" Nullable="true" />
+          <Property Type="DateTime" Name="dogumtarihi" Nullable="true" Precision="16" />
+          <Property Type="Boolean" Name="cinsiyet" Nullable="true" />
+          <Property Type="Boolean" Name="evli" Nullable="true" />
+          <Property Type="String" Name="eposta" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adres" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PersonelListesi_Result1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="kullAdi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="departmanId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="soyad" Nullable="true" MaxLength="50" />
+          <Property Type="Int16" Name="maas" Nullable="true" />
+          <Property Type="DateTime" Name="dogumtarihi" Nullable="true" Precision="16" />
+          <Property Type="Boolean" Name="cinsiyet" Nullable="true" />
+          <Property Type="Boolean" Name="evli" Nullable="true" />
+          <Property Type="String" Name="eposta" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adres" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PersonelListesi_Result2">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="kullAdi" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="departmanId" Nullable="true" />
+          <Property Type="String" Name="ad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="soyad" Nullable="true" MaxLength="50" />
+          <Property Type="Int16" Name="maas" Nullable="true" />
+          <Property Type="DateTime" Name="dogumtarihi" Nullable="true" Precision="16" />
+          <Property Type="Boolean" Name="cinsiyet" Nullable="true" />
+          <Property Type="Boolean" Name="evli" Nullable="true" />
+          <Property Type="String" Name="eposta" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adres" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="kullCek_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="departmanId" Nullable="true" />
+          <Property Type="String" Name="ad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="soyad" Nullable="true" MaxLength="50" />
+          <Property Type="Int16" Name="maas" Nullable="true" />
+          <Property Type="DateTime" Name="dogumtarihi" Nullable="true" Precision="16" />
+          <Property Type="Boolean" Name="cinsiyet" Nullable="true" />
+          <Property Type="Boolean" Name="evli" Nullable="true" />
+          <Property Type="String" Name="kullAdi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="eposta" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adres" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="userManagementModelStoreContainer" CdmEntityContainer="userManagementEntities">
+          <EntitySetMapping Name="Departman">
+            <EntityTypeMapping TypeName="userManagementModel.Departman">
+              <MappingFragment StoreEntitySet="Departman">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PersonelListesi" FunctionName="userManagementModel.Store.PersonelListesi">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="userManagementModel.PersonelListesi_Result2">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kullAdi" ColumnName="kullAdi" />
+                <ScalarProperty Name="departmanId" ColumnName="departmanId" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="maas" ColumnName="maas" />
+                <ScalarProperty Name="dogumtarihi" ColumnName="dogumtarihi" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="evli" ColumnName="evli" />
+                <ScalarProperty Name="eposta" ColumnName="eposta" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="kullCek" FunctionName="userManagementModel.Store.kullCek">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="userManagementModel.kullCek_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="departmanId" ColumnName="departmanId" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="maas" ColumnName="maas" />
+                <ScalarProperty Name="dogumtarihi" ColumnName="dogumtarihi" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="evli" ColumnName="evli" />
+                <ScalarProperty Name="kullAdi" ColumnName="kullAdi" />
+                <ScalarProperty Name="eposta" ColumnName="eposta" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

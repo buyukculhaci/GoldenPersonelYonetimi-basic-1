@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="userManagementModelStoreContainer" CdmEntityContainer="userManagementEntities">
+    <EntitySetMapping Name="Departman">
+      <EntityTypeMapping TypeName="userManagementModel.Departman">
+        <MappingFragment StoreEntitySet="Departman">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PersonelListesi" FunctionName="userManagementModel.Store.PersonelListesi">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="userManagementModel.PersonelListesi_Result2">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kullAdi" ColumnName="kullAdi" />
+          <ScalarProperty Name="departmanId" ColumnName="departmanId" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="soyad" ColumnName="soyad" />
+          <ScalarProperty Name="maas" ColumnName="maas" />
+          <ScalarProperty Name="dogumtarihi" ColumnName="dogumtarihi" />
+          <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+          <ScalarProperty Name="evli" ColumnName="evli" />
+          <ScalarProperty Name="eposta" ColumnName="eposta" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="kullCek" FunctionName="userManagementModel.Store.kullCek">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="userManagementModel.kullCek_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="departmanId" ColumnName="departmanId" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="soyad" ColumnName="soyad" />
+          <ScalarProperty Name="maas" ColumnName="maas" />
+          <ScalarProperty Name="dogumtarihi" ColumnName="dogumtarihi" />
+          <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+          <ScalarProperty Name="evli" ColumnName="evli" />
+          <ScalarProperty Name="kullAdi" ColumnName="kullAdi" />
+          <ScalarProperty Name="eposta" ColumnName="eposta" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

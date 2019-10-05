@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="userManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Departman">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="userManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Departman" EntityType="Self.Departman" />
+    <FunctionImport Name="PersonelListesi" ReturnType="Collection(userManagementModel.PersonelListesi_Result2)">
+      <Parameter Name="onlu" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="kullCek" ReturnType="Collection(userManagementModel.kullCek_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="PersonelListesi_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="kullAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="departmanId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="soyad" Nullable="true" MaxLength="50" />
+    <Property Type="Int16" Name="maas" Nullable="true" />
+    <Property Type="DateTime" Name="dogumtarihi" Nullable="true" Precision="16" />
+    <Property Type="Boolean" Name="cinsiyet" Nullable="true" />
+    <Property Type="Boolean" Name="evli" Nullable="true" />
+    <Property Type="String" Name="eposta" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="adres" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PersonelListesi_Result1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="kullAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="departmanId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="soyad" Nullable="true" MaxLength="50" />
+    <Property Type="Int16" Name="maas" Nullable="true" />
+    <Property Type="DateTime" Name="dogumtarihi" Nullable="true" Precision="16" />
+    <Property Type="Boolean" Name="cinsiyet" Nullable="true" />
+    <Property Type="Boolean" Name="evli" Nullable="true" />
+    <Property Type="String" Name="eposta" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="adres" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PersonelListesi_Result2">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="kullAdi" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="departmanId" Nullable="true" />
+    <Property Type="String" Name="ad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="soyad" Nullable="true" MaxLength="50" />
+    <Property Type="Int16" Name="maas" Nullable="true" />
+    <Property Type="DateTime" Name="dogumtarihi" Nullable="true" Precision="16" />
+    <Property Type="Boolean" Name="cinsiyet" Nullable="true" />
+    <Property Type="Boolean" Name="evli" Nullable="true" />
+    <Property Type="String" Name="eposta" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="adres" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="kullCek_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="departmanId" Nullable="true" />
+    <Property Type="String" Name="ad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="soyad" Nullable="true" MaxLength="50" />
+    <Property Type="Int16" Name="maas" Nullable="true" />
+    <Property Type="DateTime" Name="dogumtarihi" Nullable="true" Precision="16" />
+    <Property Type="Boolean" Name="cinsiyet" Nullable="true" />
+    <Property Type="Boolean" Name="evli" Nullable="true" />
+    <Property Type="String" Name="kullAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="eposta" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="adres" Nullable="true" />
+  </ComplexType>
+</Schema>
